@@ -2,6 +2,8 @@
 *
 */
 
+package cu.cs.cpsc215.project2.TigerSub;
+
 public class Order {
 	
 	private String customerName; //name of customer, eg Customer1 or John Smith
