@@ -21,6 +21,10 @@ public class Menu {
 		return myMenu;
 	}
 	
+	/**
+	 * Returns item from menu if valid number is given.
+	 * @param itemNum being the number on the menu the item is.
+	 */
 	public Item getItem(int itemNum) {
 		if((itemNum >= 0) && (itemNum <12)) {
 			return menuItems[itemNum];

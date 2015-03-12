@@ -1,5 +1,5 @@
 /**
-*
+* @author Ryan Becwar and Grace Glenn
 */
 
 package cu.cs.cpsc215.project2.TigerSub;
@@ -42,13 +42,6 @@ public class Order {
 	}
 	
 	/**
-	 * Returns the customer's ticket (int[])
-	 */
-	public int[] getTicket() {
-		return ticket;
-	}
-	
-	/**
 	 * Adds a specified amount to a given item on the customer's ticket.
 	 * 
 	 * @param itemNum is the index of the ticket to be added to
@@ -60,6 +53,9 @@ public class Order {
 	    }
 	}
 	
+	/**
+	 * Prints order to standard out, calculates the order simulataneously.
+	 */
 	public void printOrder() {
 		System.out.println("-------------------------------\n" + customerName);
 		for(int i = 0; i < 12; i++) {
