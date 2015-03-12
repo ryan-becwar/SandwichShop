@@ -37,7 +37,7 @@ public class Order {
 	 * returns the subtotal of the customer
 	 * @return subtotal
 	 */
-	public int returnSubTotal() {
+	public double returnSubTotal() {
 		return subTotal;
 	}
 	

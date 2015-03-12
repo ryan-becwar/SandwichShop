@@ -2,6 +2,7 @@ package cu.cs.cpsc215.project2.TigerSub;
 
 /**
  * Created by Ryan on 3/11/2015.
+ * Follows a standard decorator pattern
  */
 public abstract class SandwichDecorator implements Item {
 

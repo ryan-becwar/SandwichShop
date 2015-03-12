@@ -7,15 +7,20 @@ public class Sandwich implements Item {
 
     private String name;
     private double cost;
-    private String toppings;
+    private String nameWithToppings;
 
     public Sandwich(String name, double cost) {
         this.name = name;
         this.cost = cost;
+        this.nameWithToppings = name;
     }
 
-    public String makeItem(){
+    public String makeItemShort(){
         return name;
+    }
+
+    public String makeItem() {
+        return nameWithToppings;
     }
 
     public double getCost(){

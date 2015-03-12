@@ -1,14 +1,24 @@
+package cu.cs.cpsc215.project2.TigerSub;
+
 public class Menu {
 	
 	private static final int ITEMS_ON_MENU = 12;
 	private static Menu myMenu;
 	private Item[] menuItems;
 
+
 	/** 
 	 * Constructor for Menu.
 	 */
 	private Menu() {
-		menuItems = new Menu[ITEMS_ON_MENU];
+		menuItems = new Item[ITEMS_ON_MENU];
+
+		//build all items on the menu
+
+		//Item 0: Italian Meatball
+		menuItems[0] = new MozzarellaCheese(new MarinaraSauce(new Meatballs(new Sandwich("Italian Meatball", 4.75))));
+
+		//Item 1: Steak & Cheese
 	}
 	
 	/**
