@@ -64,7 +64,8 @@ public class Order {
 		System.out.println("-------------------------------\n" + customerName);
 		for(int i = 0; i < 12; i++) {
 			if(ticket[i] > 0) {
-				System.out.println()
+				System.out.println(ticket[i] + " " + tigerSubMenu.getItem(i).makeItem());
+				subTotal += tigerSubMenu.getItem(i).getCost();
 			}
 		}
 		

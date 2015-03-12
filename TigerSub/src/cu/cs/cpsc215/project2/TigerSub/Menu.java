@@ -21,5 +21,12 @@ public class Menu {
 		return myMenu;
 	}
 	
+	public Item getItem(int itemNum) {
+		if((itemNum >= 0) && (itemNum <12)) {
+			return menuItems[itemNum];
+		}
+		return null;
+	}
+	
 	
 }
