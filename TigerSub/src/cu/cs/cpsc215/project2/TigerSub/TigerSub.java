@@ -6,6 +6,8 @@ public class TigerSub {
     public static void main(String[] args){
     	
     	//Determine which parameters the user gave
+    	
+    	System.out.println("Sandwhich shop!");
 
     	//first arguments always required, equals custoemrs for day
     	
