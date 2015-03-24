@@ -1,4 +1,4 @@
-package cu.cs.cpsc215.project2.TigerSub;
+package cu.cs.cpsc215.project2;
 
 /**
  * Created by Ryan on 3/11/2015.

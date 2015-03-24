@@ -1,7 +1,7 @@
 /** 
  * Ryan Becwar and Grace Glenn
  **/
-package cu.cs.cpsc215.project2.TigerSub;
+package cu.cs.cpsc215.project2;
 
 public class Dessert implements Item {
 

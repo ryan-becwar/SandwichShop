@@ -1,4 +1,4 @@
-package cu.cs.cpsc215.project2.TigerSub;
+package cu.cs.cpsc215.project2;
 
 public interface Item {
     public String makeItem();
