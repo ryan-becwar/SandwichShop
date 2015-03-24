@@ -1,9 +1,7 @@
 /**
 * @author Ryan Becwar and Grace Glenn
 */
-
 package cu.cs.cpsc215.project2;
-
 public class Order {
 	
 	private String customerName; //name of customer
@@ -11,7 +9,7 @@ public class Order {
 	private double subTotal;
 	
 	public static int customerNumber = 0; //customer number, updated as orders are placed
-	public static Menu tigerSubMenu;
+	//public static Menu tigerSubMenu;
 	
 	/**
 	 * Default constructor
@@ -21,7 +19,7 @@ public class Order {
 		customerNumber++;
 		
 		ticket = new int[12];
-		tigerSubMenu = Menu.getMenu();
+		//tigerSubMenu = Menu.getMenu();
 		
 		subTotal = 0;
 	}
@@ -52,23 +50,11 @@ public class Order {
 		  ticket[itemNum] += amountOrdered;
 	    }
 	}
-	
-	/**
-	 * Prints order to standard out, calculates the order simulataneously.
-	 */
-	public void printOrder() {
-		System.out.println("-------------------------------\n" + customerName);
+
+	public void print() {
 		for(int i = 0; i < 12; i++) {
-			if(ticket[i] > 0) {
-				System.out.println(ticket[i] + " " + tigerSubMenu.getItem(i).makeItem());
-				subTotal += tigerSubMenu.getItem(i).getCost();
-			}
+			System.out.print(ticket[i] + "\n");
 		}
-		/**
-		System.out.println("Subtotal: $ %.2lf", subTotal);
-		System.out.println("Tax: $ %.2lf", (subTotal * .07));
-		System.out.println("Total: % .2lf", (subTotal * 1.07));
-		System.out.println();
-		*/
 	}
+	
 }
