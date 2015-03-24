@@ -9,6 +9,7 @@ public class TigerSub {
 	private static boolean simulate = false;	
 	private static int randomSeed = 0;
 	private static Order[] customerOrders;
+	private static Menu myMenu = new Menu();
 	
 	public static void checkParameters(String[] args) throws ImproperParameterException {
 		
