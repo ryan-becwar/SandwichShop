@@ -1,7 +1,7 @@
-
+/** implemented by grace */
 package cu.cs.cpsc215.project2;
 
-import java.util.Random;
+import java.util.*;
 
 public class TigerSub {
 	
@@ -24,7 +24,7 @@ public class TigerSub {
 		if(args.length >= 2) {
 			int secondParam = Integer.parseInt(args[1]);
 			if(secondParam == 1 || secondParam == 0) {
-				simulate = (secondParam == 1);
+				simulate = (secondParam == 1); //will only be false if user entered 0
 			}
 			else throw new ImproperParameterException();
 		}
@@ -37,10 +37,7 @@ public class TigerSub {
 	}
 	
 	public static void simulateOrder() {
-		//System.out.println("Simulating.");
 		Random numGenerator = new Random((long)randomSeed);
-		customerOrders = new Order[numCustomers];
-
 		for(int i = 0; i < numCustomers; i++) {
 			customerOrders[i] = new Order();
 			for (int j = 0; j < 12; j++) {
@@ -50,16 +47,37 @@ public class TigerSub {
 		}
 	}
 	
-	public static void promptOrder() {
-		System.out.println("Prompting.");
-		
+	public static void promptOrder() throws InputMismatchException {
+		Scanner scanner = new Scanner(System.in);
+
+		for(int i = 0; i < numCustomers; i++) {
+			customerOrders[i] = new Order();
+
+			for(int j = 0; j < 12; j++) {
+				System.out.println("Enter how many " + "Item " + j + " you want!");
+				int numOfItem = 0;
+				try {numOfItem = scanner.nextInt();}
+				catch (InputMismatchException ime) {
+					throw new InputMismatchException();
+				}
+				catch (NoSuchElementException nse) {}
+				finally {customerOrders[i].addToOrder(j, numOfItem);}
+			}
+			customerOrders[i].print();
+		}
+
+		scanner.close();
 	}
 	
     public static void main(String[] args){
-    	//Determine which parameters the user gave
-    	
     	try {
+    		//check and establish parameters for number of customers, simulation, and seed
     		checkParameters(args);
+
+    		//fufill orders
+    	    customerOrders = new Order[numCustomers];
+    	    if(simulate) simulateOrder(); 
+    	    else promptOrder();
     	}
     	catch (ImproperParameterException ipe) {
     		System.out.println(ipe.getMessage());
@@ -69,15 +87,21 @@ public class TigerSub {
     		System.out.println(nfe.getMessage());
     		return;
     	}
-    	finally {
-    		System.out.println("End.");
+    	catch (InputMismatchException ime) {
+    		System.out.println("Input Mismatch - not an int!");
+    		return;
     	}
-    	
-    	//if no simulation, prompt user
-    	if(simulate) simulateOrder(); //works for simulate!
-    	else promptOrder();
+    	finally {   
+    	  //print the Orders! 
+    	  for(int i = 0; i < numCustomers; i++) {
+    	  	customerOrders[i].print();
+    	  }
+    	  System.out.println("DONE!");		
+    	}
     }
 }
+
+
 
 
 

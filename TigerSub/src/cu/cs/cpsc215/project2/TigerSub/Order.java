@@ -2,6 +2,7 @@
 * @author Ryan Becwar and Grace Glenn
 */
 package cu.cs.cpsc215.project2;
+
 public class Order {
 	
 	private String customerName; //name of customer
@@ -15,9 +16,8 @@ public class Order {
 	 * Default constructor
 	 */
 	public Order() {
-		customerName = "Customer " + customerNumber;
 		customerNumber++;
-		
+		customerName = "Customer " + customerNumber;		
 		ticket = new int[12];
 		//tigerSubMenu = Menu.getMenu();
 		
@@ -52,9 +52,17 @@ public class Order {
 	}
 
 	public void print() {
+		System.out.println("-------------------------------");
+		System.out.println(getName() + ":");
 		for(int i = 0; i < 12; i++) {
-			System.out.print(ticket[i] + "\n");
+			if(ticket[i] > 0) {
+				System.out.println(ticket[i] + "" );
+			}
 		}
+
+		System.out.println("Subtotal: $");
+		System.out.println("Tax: $");
+		System.out.println("Total: $");
 	}
-	
 }
+
