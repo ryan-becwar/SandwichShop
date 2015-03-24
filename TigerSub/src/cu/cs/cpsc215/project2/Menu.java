@@ -17,10 +17,17 @@ public class Menu {
 		menuItems[0] = new MozzarellaCheese(new MarinaraSauce(new Meatballs(new Sandwich("Italian Meatball", 4.75))));
 
 		//Item 1: Steak & Cheese
+		menuItems[1] = new Mayo(new Mustard(new SauteedOnions(new SauteedPeppers(new ProvoloneCheese(new Steak(new Sandwich("Steak & Cheese", 5.00)))))));
+
 		//Item 2: Turkey
+		menuItems[2] = new TurkeyBreast(new SwissCheese(new Lettuce(new Tomato(new Ranch(new Sandwich("Turkey", 4.50))))));
+
 		//Item 3: Tuna
+		menuItems[3] = new Tuna(new CheddarCheese(new Lettuce(new Tomato(new RedWineVinaigrette(new Sandwich("Tuna", 4.50))))));
+
 		//Item 4: Veggie Lovers
-		
+		menuItems[4] = new AmericanCheese(new Lettuce(new Tomato(new Cucumber(new Onions(new Avocado(new Mayo(new Sandwich("Veggie Lovers", 4.25))))))));
+
 		//Item 5: Soda
 		menuItems[5] = new Drink("Soda", 1.00);
 		
