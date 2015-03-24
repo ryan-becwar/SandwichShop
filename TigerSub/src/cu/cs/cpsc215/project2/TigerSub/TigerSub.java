@@ -16,8 +16,7 @@ public class TigerSub {
 
     public static void main(String[] args){
     	//Determine which parameters the user gave
-    	
-    	System.out.println("Sandwhich shop!");
+    	System.out.println("TEST!");
     	
     	//if no simulation, 
     }
