@@ -64,10 +64,11 @@ public class Order {
 				subTotal += tigerSubMenu.getItem(i).getCost();
 			}
 		}
-		
-		System.out.println("Subtotal: $%.2lf", subTotal);
-		System.out.println("Tax: $%.2lf", (subTotal * .07));
-		System.out.println("Total: %.2lf", (subTotal * 1.07));
+		/**
+		System.out.println("Subtotal: $ %.2lf", subTotal);
+		System.out.println("Tax: $ %.2lf", (subTotal * .07));
+		System.out.println("Total: % .2lf", (subTotal * 1.07));
 		System.out.println();
+		*/
 	}
 }
