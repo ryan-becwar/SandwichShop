@@ -57,7 +57,7 @@ public class TigerSub {
 			customerOrders[i] = new Order();
 
 			for(int j = 0; j < 12; j++) {
-				System.out.println("Enter how many " +  myMenu.getItem(i).toString() + " you want!");
+				System.out.println("Enter how many " +  myMenu.getItem(i) + " you want!");
 				int numOfItem = 0;
 				try {numOfItem = scanner.nextInt();}
 				catch (InputMismatchException ime) {
