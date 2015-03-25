@@ -13,7 +13,7 @@ public class Dessert implements Item {
         this.cost = cost;
     }
 
-    public String toString(){
+    public String makeItem(){
         return name;
     }
 
