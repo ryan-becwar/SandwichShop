@@ -10,7 +10,7 @@ public class Meatballs extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", Meatballs";
+    public String toString() {
+        return super.toString() + ", Meatballs";
     }
 }

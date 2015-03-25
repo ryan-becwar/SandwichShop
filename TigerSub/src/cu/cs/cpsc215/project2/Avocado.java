@@ -10,8 +10,8 @@ public class Avocado extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", Avocado";
+    public String toString() {
+        return super.toString() + ", Avocado";
     }
 
 }

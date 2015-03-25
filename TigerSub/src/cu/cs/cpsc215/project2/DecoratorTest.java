@@ -8,6 +8,6 @@ public class DecoratorTest {
     public static void main(String args[]){
         Item s = new MozzarellaCheese(new MarinaraSauce(new Meatballs(new Sandwich("Italian Meatball", 4.75))));
 
-        System.out.println("Name: " + s.makeItem() + "Cost: " + s.getCost());
+        System.out.println("Name: " + s.toString() + "Cost: " + s.getCost());
     }
 }

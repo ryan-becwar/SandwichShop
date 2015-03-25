@@ -10,8 +10,8 @@ public class CheddarCheese extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", CheddarCheese";
+    public String toString() {
+        return super.toString() + ", CheddarCheese";
     }
 
 }

@@ -13,7 +13,7 @@ public class Drink implements Item {
         this.cost = cost;
     }
 
-    public String makeItem(){
+    public String toString(){
         return name;
     }
 

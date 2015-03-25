@@ -1,6 +1,7 @@
 /** implemented by grace */
 package cu.cs.cpsc215.project2;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class TigerSub {
@@ -56,7 +57,7 @@ public class TigerSub {
 			customerOrders[i] = new Order();
 
 			for(int j = 0; j < 12; j++) {
-				System.out.println("Enter how many " +  myMenu.getItem(i).makeItem() + " you want!");
+				System.out.println("Enter how many " +  myMenu.getItem(i).toString() + " you want!");
 				int numOfItem = 0;
 				try {numOfItem = scanner.nextInt();}
 				catch (InputMismatchException ime) {
@@ -97,7 +98,7 @@ public class TigerSub {
     	  //print the Orders! 
     	  for(int i = 0; i < numCustomers; i++) {
     	  	customerOrders[i].print();
-    	  	runningTotal += customerOrders[i].getSubTotal();
+    	  	runningTotal += customerOrders[i].returnSubTotal();
     	  }
     	  
     	  DecimalFormat df = new DecimalFormat("#.00");

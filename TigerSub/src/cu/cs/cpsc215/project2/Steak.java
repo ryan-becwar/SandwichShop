@@ -10,8 +10,8 @@ public class Steak extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", Steak";
+    public String toString() {
+        return super.toString() + ", Steak";
     }
 
 }

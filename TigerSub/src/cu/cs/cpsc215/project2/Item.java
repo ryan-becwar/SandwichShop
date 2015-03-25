@@ -1,6 +1,6 @@
 package cu.cs.cpsc215.project2;
 
 public interface Item {
-    public String makeItem();
+    public String toString();
     public double getCost();
 }

@@ -10,8 +10,8 @@ public class RedWineVinaigrette extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", RedWineVinaigrette";
+    public String toString() {
+        return super.toString() + ", RedWineVinaigrette";
     }
 
 }

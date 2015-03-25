@@ -10,8 +10,8 @@ public class SauteedPeppers extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", SauteedPeppers";
+    public String toString() {
+        return super.toString() + ", SauteedPeppers";
     }
 
 }

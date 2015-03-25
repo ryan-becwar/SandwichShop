@@ -10,8 +10,8 @@ public class MarinaraSauce extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", MarinaraSauce";
+    public String toString() {
+        return super.toString() + ", MarinaraSauce";
     }
 
 }

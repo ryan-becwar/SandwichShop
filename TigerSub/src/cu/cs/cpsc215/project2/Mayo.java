@@ -10,8 +10,8 @@ public class Mayo extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", Mayo";
+    public String toString() {
+        return super.toString() + ", Mayo";
     }
 
 }

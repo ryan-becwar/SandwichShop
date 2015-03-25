@@ -10,8 +10,8 @@ public class Tuna extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", Tuna";
+    public String toString() {
+        return super.toString() + ", Tuna";
     }
 
 }

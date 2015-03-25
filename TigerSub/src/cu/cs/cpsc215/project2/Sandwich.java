@@ -15,11 +15,11 @@ public class Sandwich implements Item {
         this.nameWithToppings = name;
     }
 
-    public String makeItemShort(){
+    public String toString(){
         return name;
     }
 
-    public String makeItem() {
+    public String toStringl() {
         return nameWithToppings;
     }
 

@@ -10,8 +10,8 @@ public class Ranch extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", Ranch";
+    public String toString() {
+        return super.toString() + ", Ranch";
     }
 
 }

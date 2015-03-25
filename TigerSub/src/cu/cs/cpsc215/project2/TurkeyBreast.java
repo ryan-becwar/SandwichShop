@@ -10,8 +10,8 @@ public class TurkeyBreast extends SandwichDecorator {
     }
 
     @Override
-    public String makeItem() {
-        return super.makeItem() + ", TurkeyBreast";
+    public String toString() {
+        return super.toString() + ", TurkeyBreast";
     }
 
 }
