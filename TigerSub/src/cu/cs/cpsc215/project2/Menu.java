@@ -64,7 +64,7 @@ public class Menu {
 	 * @param itemNum being the number on the menu the item is.
 	 */
 	public Item getItem(int itemNum) {
-		if((itemNum >= 0) && (itemNum <12)) return menuItems[itemNum];
+		if((itemNum >= 0) && (itemNum < 12)) return menuItems[itemNum];
 		
 		return null;
 	}

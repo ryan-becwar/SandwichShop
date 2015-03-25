@@ -3,6 +3,8 @@
 */
 package cu.cs.cpsc215.project2;
 
+import java.util.*;
+
 public class Order {
 	
 	private String customerName; //name of customer
@@ -10,7 +12,7 @@ public class Order {
 	private double subTotal;
 	
 	public static int customerNumber = 0; //customer number, updated as orders are placed
-	//public static Menu tigerSubMenu;
+	public static Menu tigerSubMenu = Menu.getMenu();
 	
 	/**
 	 * Default constructor
@@ -19,7 +21,6 @@ public class Order {
 		customerNumber++;
 		customerName = "Customer " + customerNumber;		
 		ticket = new int[12];
-		//tigerSubMenu = Menu.getMenu();
 		
 		subTotal = 0;
 	}
@@ -49,6 +50,8 @@ public class Order {
 		if((itemNum < 12) && (itemNum >= 0)){
 		  ticket[itemNum] += amountOrdered;
 	    }
+		
+		subTotal += (tigerSubMenu.getItem(itemNum).getCost() * amountOrdered);
 	}
 
 	public void print() {
@@ -56,13 +59,15 @@ public class Order {
 		System.out.println(getName() + ":");
 		for(int i = 0; i < 12; i++) {
 			if(ticket[i] > 0) {
-				System.out.println(ticket[i] + "" );
+				System.out.println(ticket[i] + " " + tigerSubMenu.getItem(i));
 			}
 		}
-
-		System.out.println("Subtotal: $");
-		System.out.println("Tax: $");
-		System.out.println("Total: $");
+		
+		DecimalFormat df = new DecimalFormat("#.00");
+		
+		System.out.println("Subtotal: $" + df.format(subTotal));
+		System.out.println("Tax: $" + df.format(subTotal * .07));
+		System.out.println("Total: $" + df.format(subTotal * 1.07));
 	}
 }
 

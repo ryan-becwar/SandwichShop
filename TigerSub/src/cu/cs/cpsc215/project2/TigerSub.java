@@ -10,6 +10,7 @@ public class TigerSub {
 	private static int randomSeed = 0;
 	private static Order[] customerOrders;
 	private static Menu myMenu = Menu.getMenu();
+	private static double runningTotal = 0;
 	
 	public static void checkParameters(String[] args) throws ImproperParameterException {
 		
@@ -55,7 +56,7 @@ public class TigerSub {
 			customerOrders[i] = new Order();
 
 			for(int j = 0; j < 12; j++) {
-				System.out.println("Enter how many " + "Item " + j + " you want!");
+				System.out.println("Enter how many " +  myMenu.getItem(i).makeItem() + " you want!");
 				int numOfItem = 0;
 				try {numOfItem = scanner.nextInt();}
 				catch (InputMismatchException ime) {
@@ -96,8 +97,12 @@ public class TigerSub {
     	  //print the Orders! 
     	  for(int i = 0; i < numCustomers; i++) {
     	  	customerOrders[i].print();
+    	  	runningTotal += customerOrders[i].getSubTotal();
     	  }
-    	  System.out.println("DONE!");		
+    	  
+    	  DecimalFormat df = new DecimalFormat("#.00");
+    	  System.out.println("-------------------------------\n");
+    	  System.out.println("We made $" + df.format(runningTotal) + " for the day!");
     	}
     }
 }
