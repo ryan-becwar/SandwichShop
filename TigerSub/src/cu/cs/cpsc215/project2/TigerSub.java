@@ -46,7 +46,6 @@ public class TigerSub {
 			for (int j = 0; j < 12; j++) {
 				customerOrders[i].addToOrder(j, numGenerator.nextInt(6));
 			}
-			customerOrders[i].print();
 		}
 	}
 	
@@ -57,7 +56,7 @@ public class TigerSub {
 			customerOrders[i] = new Order();
 
 			for(int j = 0; j < 12; j++) {
-				System.out.println("Enter how many " +  myMenu.getItem(i).makeItem() + " you want!");
+				System.out.println("Enter how many " +  myMenu.getItem(j).makeItem() + " you want!");
 				int numOfItem = 0;
 				try {numOfItem = scanner.nextInt();}
 				catch (InputMismatchException ime) {
@@ -66,7 +65,6 @@ public class TigerSub {
 				catch (NoSuchElementException nse) {}
 				finally {customerOrders[i].addToOrder(j, numOfItem);}
 			}
-			customerOrders[i].print();
 		}
 
 		scanner.close();
@@ -94,13 +92,13 @@ public class TigerSub {
     		System.out.println("Input Mismatch - not an int!");
     		return;
     	}
-    	finally {   
-    	  //print the Orders! 
-    	  for(int i = 0; i < numCustomers; i++) {
-    	  	customerOrders[i].print();
-    	  	runningTotal += customerOrders[i].returnSubTotal();
-    	  }
-    	  
+    	finally { 
+    		
+          for(int i = 0; i < 12; i++) {
+  			runningTotal += (customerOrders[i].returnSubTotal() 1.07);
+  			customerOrders[i].print();
+          }
+          
     	  DecimalFormat df = new DecimalFormat("#.00");
     	  System.out.println("-------------------------------\n");
     	  System.out.println("We made $" + df.format(runningTotal) + " for the day!");
