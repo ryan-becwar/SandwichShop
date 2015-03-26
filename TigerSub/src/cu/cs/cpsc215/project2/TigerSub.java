@@ -1,6 +1,9 @@
-/** implemented by grace */
+/** 
+ * Grace Glenn and Ryan Becwar
+ * created by Grace March 2015
+ * Implements sandwhich shop for project2.
+ */
 package cu.cs.cpsc215.project2;
-
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -9,10 +12,26 @@ public class TigerSub {
 	private static int numCustomers = 0;
 	private static boolean simulate = false;	
 	private static int randomSeed = 0;
-	private static Order[] customerOrders;
-	private static Menu myMenu = Menu.getMenu();
-	private static double runningTotal = 0;
 	
+	private static Order[] customerOrders;
+	private static Menu myMenu = Menu.getMenu(); //singleton Menu
+	private static double runningTotal = 0; 
+	
+	/**
+	 * @param command line arguments 
+	 * Takes in 2 to 3 ints verifies each one, then assigns to
+	 * numCustomers, simulate and random seed.
+	 * 
+	 * <b>numCustomers</b> is always determined by first param. Must be >= 0.
+	 * <b>simulate</b> always determiend by second param. Must be 1 or 0, 1 
+	 * meaning to simulate and 0 meaning to not. No third argument may be given
+	 * if simulation is unrequested.
+	 * 
+	 * <b>randomSeed</b> is determiend by third param if no simulation desired.
+	 * It must be >=0
+	 * 
+	 * A violatoin of any of these things results in an ImproperParameterException
+	 */
 	public static void checkParameters(String[] args) throws ImproperParameterException {
 		
 		if(args.length >= 1) {
@@ -39,6 +58,10 @@ public class TigerSub {
 		if(args.length > 3) throw new ImproperParameterException();	
 	}
 	
+	/**
+	 * Simulates order using numCustomers and random seed provided by user.
+	 * All order amounts are pseudo-randomly generated to be between [0,5]
+	 */
 	public static void simulateOrder() {
 		Random numGenerator = new Random((long)randomSeed);
 		for(int i = 0; i < numCustomers; i++) {
@@ -49,6 +72,13 @@ public class TigerSub {
 		}
 	}
 	
+	/**
+	 * Prompts user to manually enter amounts of all menu items they wish
+	 * to in any quantity.
+	 * 
+	 * If no input is given, number of items ordered is assumed to be 0.
+	 * Entering a string results in an InputMismatchException.
+	 */
 	public static void promptOrder() throws InputMismatchException {
 		Scanner scanner = new Scanner(System.in);
 
@@ -66,10 +96,12 @@ public class TigerSub {
 				finally {customerOrders[i].addToOrder(j, numOfItem);}
 			}
 		}
-
 		scanner.close();
 	}
 	
+	/**
+	 * Main method that takes in parameters, checks them, and then fufills orders and prints total profit.
+	 */
     public static void main(String[] args){
     	try {
     		//check and establish parameters for number of customers, simulation, and seed
@@ -89,16 +121,16 @@ public class TigerSub {
     		return;
     	}
     	catch (InputMismatchException ime) {
-    		System.out.println("Input Mismatch - not an int!");
+    		System.out.println("Input Mismatch - Exiting!");
     		return;
     	}
     	finally { 
-    		
+    	  //Print all orders
           for(int i = 0; i < customerOrders.length; i++) {
   			runningTotal += (customerOrders[i].returnSubTotal() * 1.07);
   			customerOrders[i].print();
           }
-          
+          //Print total profit made
     	  DecimalFormat df = new DecimalFormat("#.00");
     	  System.out.println("-------------------------------\n");
     	  System.out.println("We made $" + df.format(runningTotal) + " for the day!");

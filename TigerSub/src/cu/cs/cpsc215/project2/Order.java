@@ -1,5 +1,9 @@
 /**
 * @author Ryan Becwar and Grace Glenn
+* created by Grace March 2015
+* CPSC 2150 Project 2
+* Order class allows for the creation of a customer ticket
+* that keeps track of how many items are ordered from tigerSub Menu.
 */
 package cu.cs.cpsc215.project2;
 
@@ -55,6 +59,9 @@ public class Order {
 		subTotal += (tigerSubMenu.getItem(itemNum).getCost() * amountOrdered);
 	}
 
+	/**
+	 * Prints the Customer number and all items orderd, including subtotal, tax, and total.
+	 */
 	public void print() {
 		System.out.println("-------------------------------");
 		System.out.println(getName() + ":");
