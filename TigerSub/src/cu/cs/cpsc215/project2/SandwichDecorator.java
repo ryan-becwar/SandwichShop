@@ -15,6 +15,10 @@ public abstract class SandwichDecorator implements Item {
     public String toString() {
         return decoratedSandwich.toString();
     }
+    
+    public String makeItem() {
+    	return  decoratedSandwich.makeItem();
+     }
 
     public double getCost() {
             return decoratedSandwich.getCost();

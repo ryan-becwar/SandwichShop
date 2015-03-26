@@ -60,7 +60,7 @@ public class Order {
 		System.out.println(getName() + ":");
 		for(int i = 0; i < 12; i++) {
 			if(ticket[i] > 0) {
-				System.out.println(ticket[i] + " " + tigerSubMenu.getItem(i));
+				System.out.println(ticket[i] + " " + tigerSubMenu.getItem(i).makeItem());
 			}
 		}
 		
