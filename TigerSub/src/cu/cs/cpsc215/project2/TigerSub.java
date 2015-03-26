@@ -94,8 +94,8 @@ public class TigerSub {
     	}
     	finally { 
     		
-          for(int i = 0; i < 12; i++) {
-  			runningTotal += (customerOrders[i].returnSubTotal() 1.07);
+          for(int i = 0; i < customerOrders.length; i++) {
+  			runningTotal += (customerOrders[i].returnSubTotal() * 1.07);
   			customerOrders[i].print();
           }
           
