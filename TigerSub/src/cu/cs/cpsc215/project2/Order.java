@@ -19,8 +19,7 @@ public class Order {
 	private BigDecimal subTotal;
 	private static final BigDecimal tax = new BigDecimal("0.07");
 	private NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
-	private double subTotalDouble;
-	
+
 	public static int customerNumber = 0; //customer number, updated as orders are placed
 	public static Menu tigerSubMenu = Menu.getMenu();
 	
@@ -33,8 +32,7 @@ public class Order {
 		ticket = new int[12];
 		subTotal = new BigDecimal("0.00");
 		subTotal = subTotal.setScale(2, BigDecimal.ROUND_HALF_UP);
-		
-		subTotalDouble = 0;
+
 	}
 	
 	/**
@@ -52,10 +50,6 @@ public class Order {
 	public BigDecimal returnSubTotal() {
 		return subTotal;
 	}
-
-	public double returnSubTotalDouble() {
-		return subTotalDouble;
-	}
 	
 	/**
 	 * Adds a specified amount to a given item on the customer's ticket.
@@ -63,14 +57,12 @@ public class Order {
 	 * @param itemNum is the index of the ticket to be added to
 	 * @param amountOrdered is the amount of items added to the ticket
 	 */
-	public void addToOrder(int itemNum, int amountOrdered) {	
-		if((itemNum < 12) && (itemNum >= 0)){
-		  ticket[itemNum] += amountOrdered;
-	    }
+	public void addToOrder(int itemNum, int amountOrdered) {
+		if ((itemNum < 12) && (itemNum >= 0)) {
+			ticket[itemNum] += amountOrdered;
+		}
 
-		//equivalent statements
 		subTotal = subTotal.add(new BigDecimal(tigerSubMenu.getItem(itemNum).getCost()).multiply(new BigDecimal(amountOrdered)).setScale(2, BigDecimal.ROUND_HALF_UP));
-		subTotalDouble += (tigerSubMenu.getItem(itemNum).getCost() * amountOrdered);
 	}
 
 	/**

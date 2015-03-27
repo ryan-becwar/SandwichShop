@@ -18,7 +18,6 @@ public class TigerSub {
 	private static Menu myMenu = Menu.getMenu(); //singleton Menu
 	private static final BigDecimal tax = new BigDecimal("1.07");
 	private static NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
-	private static double runningTotalDouble = 0;
 	
 	/**
 	 * //@param command line arguments
@@ -134,16 +133,14 @@ public class TigerSub {
           for(int i = 0; i < customerOrders.length; i++) {
 
 			  runningTotal = runningTotal.add(customerOrders[i].returnSubTotal().multiply(tax).setScale(2, BigDecimal.ROUND_HALF_UP));
-  			runningTotalDouble += (customerOrders[i].returnSubTotalDouble() * 1.07);
   			customerOrders[i].print();
           }
           //Print total profit made
 
 			String s = n.format(runningTotal);
 
-    	  DecimalFormat df = new DecimalFormat("#.00");
     	  System.out.println("-------------------------------\n");
-    	  System.out.println("We made $" + df.format(runningTotalDouble) + " for the day!");
+    	  System.out.println("We made " + s + " for the day!");
 
 		}
     }
