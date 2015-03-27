@@ -69,7 +69,7 @@ public class Order {
 	    }
 
 		//equivalent statements
-		subTotal = subTotal.add(new BigDecimal(tigerSubMenu.getItem(itemNum).getCost()).multiply(new BigDecimal(amountOrdered)));
+		subTotal = subTotal.add(new BigDecimal(tigerSubMenu.getItem(itemNum).getCost()).multiply(new BigDecimal(amountOrdered)).setScale(2, BigDecimal.ROUND_HALF_UP));
 		subTotalDouble += (tigerSubMenu.getItem(itemNum).getCost() * amountOrdered);
 	}
 
@@ -86,18 +86,12 @@ public class Order {
 		}
 
 		String s = n.format(subTotal);
-		String sTax = n.format(subTotal.multiply(tax));
-		String sTaxSub = n.format(subTotal.add(subTotal.multiply(tax)));
+		String sTax = n.format(subTotal.multiply(tax).setScale(2, BigDecimal.ROUND_HALF_UP));
+		String sTaxSub = n.format(subTotal.add(subTotal.multiply(tax).setScale(2, BigDecimal.ROUND_HALF_UP)));
 
 		System.out.println("\nSubtotal: " + s);
 		System.out.println("Tax: " + sTax);
 		System.out.println("Total: " + sTaxSub + "\n");
-
-		DecimalFormat df = new DecimalFormat("#.00");
-		
-		System.out.println("\nSubtotal: $" + df.format(subTotalDouble));
-		System.out.println("Tax: $" + df.format(subTotalDouble * .07));
-		System.out.println("Total: $" + df.format(subTotalDouble * 1.07) + "\n");
 	}
 }
 

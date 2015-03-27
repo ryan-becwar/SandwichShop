@@ -133,7 +133,7 @@ public class TigerSub {
     	  //Print all orders
           for(int i = 0; i < customerOrders.length; i++) {
 
-			  runningTotal.add(customerOrders[i].returnSubTotal().multiply(tax));
+			  runningTotal = runningTotal.add(customerOrders[i].returnSubTotal().multiply(tax).setScale(2, BigDecimal.ROUND_HALF_UP));
   			runningTotalDouble += (customerOrders[i].returnSubTotalDouble() * 1.07);
   			customerOrders[i].print();
           }
@@ -142,9 +142,8 @@ public class TigerSub {
 			String s = n.format(runningTotal);
 
     	  DecimalFormat df = new DecimalFormat("#.00");
-    	  System.out.println("\n-------------------------------\n");
+    	  System.out.println("-------------------------------\n");
     	  System.out.println("We made $" + df.format(runningTotalDouble) + " for the day!");
-			System.out.println("We made " + s + " for the day!");
 
 		}
     }
