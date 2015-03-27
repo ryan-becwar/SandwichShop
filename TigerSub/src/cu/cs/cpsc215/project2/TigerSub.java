@@ -132,7 +132,7 @@ public class TigerSub {
           }
           //Print total profit made
     	  DecimalFormat df = new DecimalFormat("#.00");
-    	  System.out.println("-------------------------------\n");
+    	  System.out.println("\n-------------------------------\n");
     	  System.out.println("We made $" + df.format(runningTotal) + " for the day!");
     	}
     }

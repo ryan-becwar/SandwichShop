@@ -73,9 +73,9 @@ public class Order {
 		
 		DecimalFormat df = new DecimalFormat("#.00");
 		
-		System.out.println("Subtotal: $" + df.format(subTotal));
+		System.out.println("\nSubtotal: $" + df.format(subTotal));
 		System.out.println("Tax: $" + df.format(subTotal * .07));
-		System.out.println("Total: $" + df.format(subTotal * 1.07));
+		System.out.println("Total: $" + df.format(subTotal * 1.07) + "\n");
 	}
 }
 
