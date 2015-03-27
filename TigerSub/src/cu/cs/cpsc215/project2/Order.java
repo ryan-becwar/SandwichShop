@@ -7,14 +7,19 @@
 */
 package cu.cs.cpsc215.project2;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.*;
 
 public class Order {
 	
 	private String customerName; //name of customer
 	private int[] ticket; //contains amount of each item ordered
-	private double subTotal;
+	private BigDecimal subTotal;
+	private static final BigDecimal tax = new BigDecimal("0.07");
+	private NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
+	private double subTotalDouble;
 	
 	public static int customerNumber = 0; //customer number, updated as orders are placed
 	public static Menu tigerSubMenu = Menu.getMenu();
@@ -26,8 +31,10 @@ public class Order {
 		customerNumber++;
 		customerName = "Customer " + customerNumber;		
 		ticket = new int[12];
+		subTotal = new BigDecimal("0.00");
+		subTotal = subTotal.setScale(2, BigDecimal.ROUND_HALF_UP);
 		
-		subTotal = 0;
+		subTotalDouble = 0;
 	}
 	
 	/**
@@ -41,8 +48,13 @@ public class Order {
 	 * returns the subtotal of the customer
 	 * @return subtotal
 	 */
-	public double returnSubTotal() {
+
+	public BigDecimal returnSubTotal() {
 		return subTotal;
+	}
+
+	public double returnSubTotalDouble() {
+		return subTotalDouble;
 	}
 	
 	/**
@@ -55,8 +67,10 @@ public class Order {
 		if((itemNum < 12) && (itemNum >= 0)){
 		  ticket[itemNum] += amountOrdered;
 	    }
-		
-		subTotal += (tigerSubMenu.getItem(itemNum).getCost() * amountOrdered);
+
+		//equivalent statements
+		subTotal = subTotal.add(new BigDecimal(tigerSubMenu.getItem(itemNum).getCost()).multiply(new BigDecimal(amountOrdered)));
+		subTotalDouble += (tigerSubMenu.getItem(itemNum).getCost() * amountOrdered);
 	}
 
 	/**
@@ -70,12 +84,20 @@ public class Order {
 				System.out.println(ticket[i] + " " + tigerSubMenu.getItem(i).makeItem());
 			}
 		}
-		
+
+		String s = n.format(subTotal);
+		String sTax = n.format(subTotal.multiply(tax));
+		String sTaxSub = n.format(subTotal.add(subTotal.multiply(tax)));
+
+		System.out.println("\nSubtotal: " + s);
+		System.out.println("Tax: " + sTax);
+		System.out.println("Total: " + sTaxSub + "\n");
+
 		DecimalFormat df = new DecimalFormat("#.00");
 		
-		System.out.println("\nSubtotal: $" + df.format(subTotal));
-		System.out.println("Tax: $" + df.format(subTotal * .07));
-		System.out.println("Total: $" + df.format(subTotal * 1.07) + "\n");
+		System.out.println("\nSubtotal: $" + df.format(subTotalDouble));
+		System.out.println("Tax: $" + df.format(subTotalDouble * .07));
+		System.out.println("Total: $" + df.format(subTotalDouble * 1.07) + "\n");
 	}
 }
 

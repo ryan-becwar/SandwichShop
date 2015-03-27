@@ -4,7 +4,8 @@
  * Implements sandwhich shop for project2.
  */
 package cu.cs.cpsc215.project2;
-import java.text.DecimalFormat;
+import java.math.*;
+import java.text.*;
 import java.util.*;
 
 public class TigerSub {
@@ -15,22 +16,24 @@ public class TigerSub {
 	
 	private static Order[] customerOrders;
 	private static Menu myMenu = Menu.getMenu(); //singleton Menu
-	private static double runningTotal = 0; 
+	private static final BigDecimal tax = new BigDecimal("1.07");
+	private static NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
+	private static double runningTotalDouble = 0;
 	
 	/**
-	 * @param command line arguments 
+	 * //@param command line arguments
 	 * Takes in 2 to 3 ints verifies each one, then assigns to
 	 * numCustomers, simulate and random seed.
 	 * 
 	 * <b>numCustomers</b> is always determined by first param. Must be >= 0.
-	 * <b>simulate</b> always determiend by second param. Must be 1 or 0, 1 
+	 * <b>simulate</b> always determined by second param. Must be 1 or 0, 1
 	 * meaning to simulate and 0 meaning to not. No third argument may be given
 	 * if simulation is unrequested.
 	 * 
-	 * <b>randomSeed</b> is determiend by third param if no simulation desired.
+	 * <b>randomSeed</b> is determined by third param if no simulation desired.
 	 * It must be >=0
 	 * 
-	 * A violatoin of any of these things results in an ImproperParameterException
+	 * A violation of any of these things results in an ImproperParameterException
 	 */
 	public static void checkParameters(String[] args) throws ImproperParameterException {
 		
@@ -103,6 +106,8 @@ public class TigerSub {
 	 * Main method that takes in parameters, checks them, and then fufills orders and prints total profit.
 	 */
     public static void main(String[] args){
+		BigDecimal runningTotal = new BigDecimal("0.00");
+		runningTotal = runningTotal.setScale(2, BigDecimal.ROUND_HALF_UP);
     	try {
     		//check and establish parameters for number of customers, simulation, and seed
     		checkParameters(args);
@@ -127,14 +132,21 @@ public class TigerSub {
     	finally { 
     	  //Print all orders
           for(int i = 0; i < customerOrders.length; i++) {
-  			runningTotal += (customerOrders[i].returnSubTotal() * 1.07);
+
+			  runningTotal.add(customerOrders[i].returnSubTotal().multiply(tax));
+  			runningTotalDouble += (customerOrders[i].returnSubTotalDouble() * 1.07);
   			customerOrders[i].print();
           }
           //Print total profit made
+
+			String s = n.format(runningTotal);
+
     	  DecimalFormat df = new DecimalFormat("#.00");
     	  System.out.println("\n-------------------------------\n");
-    	  System.out.println("We made $" + df.format(runningTotal) + " for the day!");
-    	}
+    	  System.out.println("We made $" + df.format(runningTotalDouble) + " for the day!");
+			System.out.println("We made " + s + " for the day!");
+
+		}
     }
 }
 
