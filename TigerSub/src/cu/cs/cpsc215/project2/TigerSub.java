@@ -55,6 +55,7 @@ public class TigerSub {
 		if(args.length == 3) {
 			if(!simulate) throw new ImproperParameterException();
 			int thirdParam = Integer.parseInt(args[2]);	
+			randomSeed = thirdParam; //should have been added
 		}
 		
 		if(args.length > 3) throw new ImproperParameterException();	
@@ -132,7 +133,7 @@ public class TigerSub {
     	  //Print all orders
           for(int i = 0; i < customerOrders.length; i++) {
 
-			  runningTotal = runningTotal.add(customerOrders[i].returnSubTotal().multiply(tax).setScale(2, BigDecimal.ROUND_HALF_UP));
+			runningTotal = runningTotal.add(customerOrders[i].returnSubTotal().multiply(tax).setScale(2, BigDecimal.ROUND_HALF_UP));
   			customerOrders[i].print();
           }
           //Print total profit made

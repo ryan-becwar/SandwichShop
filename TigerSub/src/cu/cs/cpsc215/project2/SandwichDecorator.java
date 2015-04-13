@@ -21,6 +21,6 @@ public abstract class SandwichDecorator implements Item {
      }
 
     public double getCost() {
-            return decoratedSandwich.getCost();
+        return decoratedSandwich.getCost();
     }
 }
